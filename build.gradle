@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'io.freefair.lombok' version "${lombokPluginVersion}"
 }
 
 group = 'pl.rav'
@@ -10,10 +11,23 @@ repositories {
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
 
+    // kafka
+    implementation "org.apache.kafka:kafka-streams:${kafkaStreamVersion}"
 
+    //jackson for custom serdes
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonSerDesVersion}"
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jacksonSerDesVersion}"
+
+    //log
+    implementation "ch.qos.logback:logback-core:${logbackVersion}"
+    implementation "ch.qos.logback:logback-classic:${logbackVersion}"
+    implementation "org.slf4j:slf4j-api:${slf4jApiVersion}"
+
+    //kafka-streams test
+    testImplementation "org.apache.kafka:kafka-streams-test-utils:${kafkaStreamVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}"
 }
 
 test {
