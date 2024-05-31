@@ -17,7 +17,7 @@ services:
     platform: linux/amd64
     hostname: broker
     container_name: broker
-    #ensuring that 'zookeeper' starts before the Kafka broker.
+    # ensuring that 'zookeeper' starts before the Kafka broker.
     depends_on:
       - zookeeper
     # 9092 - the port, that the Kafka broker inside the container listens on, for the client connections, exposed to 9092

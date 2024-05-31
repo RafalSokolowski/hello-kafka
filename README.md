@@ -13,6 +13,12 @@ instantiate the Producer (producing messages to the topic 'source'):
 
     kafka-console-producer --broker-list localhost:9092 --topic source
 
+If want to pass a key also (when the logic is working with Key, need to add property w/ key separator and allow for parse = `--property "key.separator=-" --property "parse.key=true`) 
+then Producer will accept `key-Value` 
+
+    kafka-console-producer --broker-list localhost:9092 --topic source --property "key.separator=-" --property "parse.key=true"
+
+
 ## 4. Log into the broker container in other terminal window: docker exec -it broker bash
 start the Bash shell session 'bash' in the broker container 'broker' ('exec -it' interactive terminal)
 
